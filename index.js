@@ -48,6 +48,7 @@ app.get('/admin', async(req, res) => {
 app.get('/:id', async(req, res) => {
     let response = await addClick(req.params.id)
     if (response.status) {
+        res.header('Access-Control-Allow-Origin', '*')
         res.redirect(301, "https://www.google.com")
     } else {
         res.status(400).json({ message: response.message })
