@@ -3,10 +3,10 @@ const { nanoid } = require('nanoid')
 
 const User = require('../models/teacher')
 
-const createTeacher = async(username, name) => {
+const createTeacher = async(username, name, subject) => {
     const link = nanoid(6)
     try {
-        let newUser = new User({ username, link, name, clicks: 0 })
+        let newUser = new User({ username, link, name, subject })
         let user = await newUser.save()
         return { status: true, message: user.link }
     } catch (error) {
@@ -17,6 +17,7 @@ const createTeacher = async(username, name) => {
 const getAllTeachers = async() => {
     try {
         let allUsers = await User.find({})
+        console.log(allUsers)
         return { status: true, message: allUsers }
     } catch (error) {
         return { status: false, message: error.message }

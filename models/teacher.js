@@ -12,6 +12,7 @@ const TeacherSchema = new mongoose.Schema({
     },
     name: {
         type: String,
+        required:true,
     },
     subject:{
         type:String,
