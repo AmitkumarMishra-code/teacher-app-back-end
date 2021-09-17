@@ -5,7 +5,7 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const cors = require('cors')
 
-const { createUser, addClick, getAllUsers } = require('./controllers/teacherController')
+const { createTeacher, getAllTeachers } = require('./controllers/teacherController')
 
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
@@ -24,11 +24,8 @@ app.get('/', (req, res) => {
 })
 
 app.post('/user', async(req, res) => {
-    let { username, name } = req.body
-    if (!name) {
-        name = 'Anonymous User'
-    }
-    let response = await createUser(username, name)
+    let { username, name, subject } = req.body
+    let response = await createTeacher(username, name, subject)
     if (response.status) {
         res.status(200).json({ message: response.message })
     } else {
@@ -37,7 +34,7 @@ app.post('/user', async(req, res) => {
 })
 
 app.get('/admin', async(req, res) => {
-    let response = await getAllUsers()
+    let response = await getAllTeachers()
     if (response.status) {
         res.status(200).json({ message: response.message })
     } else {
