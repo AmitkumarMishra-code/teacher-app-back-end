@@ -5,7 +5,7 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const cors = require('cors')
 
-const { createUser, addClick, getAllUsers } = require('./controllers/userController')
+const { createUser, addClick, getAllUsers } = require('./controllers/teacherController')
 
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
