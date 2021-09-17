@@ -45,14 +45,6 @@ app.get('/admin', async(req, res) => {
     }
 })
 
-app.get('/:id', async(req, res) => {
-    let response = await addClick(req.params.id)
-    if (response.status) {
-        res.status(200).json({ message: "https://www.google.com" })
-    } else {
-        res.status(400).json({ message: response.message })
-    }
-})
 
 app.all(/.*/, (req, res) => {
     res.status(404).json({ message: 'Invalid endpoint. Please contact the admin.' })
