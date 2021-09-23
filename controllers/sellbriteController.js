@@ -16,7 +16,7 @@ async function getProducts() {
         return { status: true, message: response.data }
     } catch (error) {
         return { status: false, message: error.message }
-    });
+    };
 
 }
 
@@ -37,7 +37,7 @@ async function getInventory() {
         return { status: true, message: response.data }
     } catch (error) {
         return { status: false, message: error.message }
-    });
+    };
 }
 
 module.exports = {
