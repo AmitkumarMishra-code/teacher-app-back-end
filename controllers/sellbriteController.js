@@ -11,7 +11,7 @@ async function getProducts() {
                 "Authorization": `Basic NTgxODEyYTctZWQ5OS00YmExLTk1ZWItOGM0MzYyZGFlN2E3OmE4MmNjZjA0ZGVmMTVmM2IzYmY5Nzg3N2VmZDE2M2Zk`
             },
         })
-        let data = await response.json()
+        let data = response.data
         if (response.status !== 200) {
             throw new Error(data.message)
         } else {
@@ -29,7 +29,7 @@ async function getInventory() {
                 "Authorization": `Basic NTgxODEyYTctZWQ5OS00YmExLTk1ZWItOGM0MzYyZGFlN2E3OmE4MmNjZjA0ZGVmMTVmM2IzYmY5Nzg3N2VmZDE2M2Zk`
             },
         })
-        let data = await response.json()
+        let data = response.data
         if (response.status !== 200) {
             throw new Error(data.message)
         } else {
