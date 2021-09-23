@@ -1,6 +1,6 @@
 const URL = `https://api.sellbrite.com/v1`
 
-const authToken = Buffer.from(process.env.REACT_APP_ACCOUNT_TOKEN + ':' + process.env.REACT_APP_SECRET_KEY).toString('base64')
+const authToken = process.env.REACT_APP_ACCOUNT_TOKEN + ':' + process.env.REACT_APP_SECRET_KEY
 console.log(authToken, "authtoken")
 
 async function getProducts() {
