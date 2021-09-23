@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+const axios = require("axios")
 const URL = `https://api.sellbrite.com/v1`
 
 // const authToken = Buffer.from(process.env.REACT_APP_ACCOUNT_TOKEN + ':' + process.env.REACT_APP_SECRET_KEY).toString('base64')
@@ -6,7 +6,7 @@ const URL = `https://api.sellbrite.com/v1`
 
 async function getProducts() {
     try {
-        let response = await fetch(URL + '/products', {
+        let response = await axios.get(URL + '/products', {
             headers: {
                 "Authorization": `Basic NTgxODEyYTctZWQ5OS00YmExLTk1ZWItOGM0MzYyZGFlN2E3OmE4MmNjZjA0ZGVmMTVmM2IzYmY5Nzg3N2VmZDE2M2Zk`
             },
@@ -24,7 +24,7 @@ async function getProducts() {
 
 async function getInventory() {
     try {
-        let response = await fetch(URL + '/inventory', {
+        let response = await axios.get(URL + '/inventory', {
             headers: {
                 "Authorization": `Basic NTgxODEyYTctZWQ5OS00YmExLTk1ZWItOGM0MzYyZGFlN2E3OmE4MmNjZjA0ZGVmMTVmM2IzYmY5Nzg3N2VmZDE2M2Zk`
             },
