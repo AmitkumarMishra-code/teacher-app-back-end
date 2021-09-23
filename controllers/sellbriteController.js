@@ -1,13 +1,13 @@
 const URL = `https://api.sellbrite.com/v1`
 
-const authToken = Buffer.from(process.env.REACT_APP_ACCOUNT_TOKEN + ':' + process.env.REACT_APP_SECRET_KEY).toString('base64')
-console.log(authToken, "authtoken")
+// const authToken = Buffer.from(process.env.REACT_APP_ACCOUNT_TOKEN + ':' + process.env.REACT_APP_SECRET_KEY).toString('base64')
+// console.log(authToken, "authtoken")
 
 async function getProducts() {
     try {
         let response = await fetch(URL + '/products', {
             headers: {
-                "Authorization": `Basic ${authToken}`
+                "Authorization": `Basic NTgxODEyYTctZWQ5OS00YmExLTk1ZWItOGM0MzYyZGFlN2E3OmE4MmNjZjA0ZGVmMTVmM2IzYmY5Nzg3N2VmZDE2M2Zk`
             },
         })
         let data = await response.json()
@@ -17,7 +17,7 @@ async function getProducts() {
             return { status: true, message: data.message }
         }
     } catch (error) {
-        return { status: false, message: error }
+        return { status: false, message: error.message }
     }
 }
 
@@ -25,7 +25,7 @@ async function getInventory() {
     try {
         let response = await fetch(URL + '/inventory', {
             headers: {
-                "Authorization": `Basic ${authToken}`
+                "Authorization": `Basic NTgxODEyYTctZWQ5OS00YmExLTk1ZWItOGM0MzYyZGFlN2E3OmE4MmNjZjA0ZGVmMTVmM2IzYmY5Nzg3N2VmZDE2M2Zk`
             },
         })
         let data = await response.json()
@@ -35,7 +35,7 @@ async function getInventory() {
             return { status: true, message: data.message }
         }
     } catch (error) {
-        return { status: false, message: error }
+        return { status: false, message: error.message }
     }
 }
 
