@@ -40,6 +40,6 @@ async function getInventory() {
 }
 
 module.exports = {
-    getInventory(),
-    getProducts()
+    getInventory,
+    getProducts
 }
