@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 
 const { createTeacher, getAllTeachers } = require('./controllers/teacherController')
+const { getProducts, getInventory } = require('./controllers/sellbriteController')
 
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
@@ -35,6 +36,24 @@ app.post('/user', async(req, res) => {
 
 app.get('/admin', async(req, res) => {
     let response = await getAllTeachers()
+    if (response.status) {
+        res.status(200).json({ message: response.message })
+    } else {
+        res.status(400).json({ message: response.message })
+    }
+})
+
+app.get('/products', async(req, res) => {
+    let response = await getProducts()
+    if (response.status) {
+        res.status(200).json({ message: response.message })
+    } else {
+        res.status(400).json({ message: response.message })
+    }
+})
+
+app.get('/inventory', async(req, res) => {
+    let response = await getInventory()
     if (response.status) {
         res.status(200).json({ message: response.message })
     } else {
