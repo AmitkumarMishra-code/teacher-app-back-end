@@ -7,6 +7,7 @@ const cors = require('cors')
 
 const { createTeacher, getAllTeachers } = require('./controllers/teacherController')
 const { getProducts, getInventory } = require('./controllers/sellbriteController')
+const { getList, getRezdyProduct } = require('./controllers/rezdyController')
 
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
@@ -61,6 +62,23 @@ app.get('/inventory', async(req, res) => {
     }
 })
 
+app.get('/rezdy-list', async(req, res) => {
+    let response = await getList()
+    if (response.status) {
+        res.status(200).json({ message: response.message })
+    } else {
+        res.status(400).json({ message: response.message })
+    }
+})
+
+app.get('/rezdy-product/:id', async(req, res) => {
+    let response = await getRezdyProduct(req.params.id)
+    if (response.status) {
+        res.status(200).json({ message: response.message })
+    } else {
+        res.status(400).json({ message: response.message })
+    }
+})
 
 app.all(/.*/, (req, res) => {
     res.status(404).json({ message: 'Invalid endpoint. Please contact the admin.' })
